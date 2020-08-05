@@ -27,6 +27,7 @@ C 225,30,0
 11110111 1110101 101111010001 11111111 1111111 111111111111
 ```
 
+### The elements
 **R(esolution)**: width x heigth (in px)  
 **NO(rth)**: path to BMP texture  
 **SO(uth)**: path to BMP texture  
@@ -34,4 +35,17 @@ C 225,30,0
 **EA(st)**: path to BMP texture  
 **S(prite)**: path to BMP texture  
 **F(loor)**: floor color (RGB value)  
-**C(eiling)**: ceiling color (RGB value)  
+**C(eiling)**: ceiling color (RGB value)
+
+### The map
+**0**: Empty  
+**1**: Wall  
+**2**: Sprite  
+**N/S/E/W**: Start position, with the character specifying the camera orientation
+
+### Parsing the input
+A couple things must be considered upon parsing a `.cub` file:
+1. The map must be surrounded by walls.
+2. The elements can be given in any order, the map is always given last.
+3. The elements are seperated by 1 or more newlines.
+4. Information within elements is seperated by 1 or more spaces.
