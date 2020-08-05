@@ -25,18 +25,18 @@ C 225,30,0
 11110111 1110101 101111010001 11111111 1111111 111111111111
 ```
 
-R(esolution): width x heigth (in px)
+**R(esolution)**: width x heigth (in px)
 
-NO(rth): path to BMP texture
+**NO(rth)**: path to BMP texture
 
-SO(uth): path to BMP texture
+**SO(uth)**: path to BMP texture
 
-WE(st): path to BMP texture
+**WE(st)**: path to BMP texture
 
-EA(st): path to BMP texture
+**EA(st)**: path to BMP texture
 
-S(prite): path to BMP texture
+**S(prite)**: path to BMP texture
 
-F(loor): floor color (RGB value)
+**F(loor)**: floor color (RGB value)
 
-C(eiling): ceiling color (RGB value)
+**C(eiling)**: ceiling color (RGB value)
