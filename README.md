@@ -1,5 +1,5 @@
 ## Introduction
-Cub3d is a C program which generates raycasted 3D looking worlds, similar to those found in the 1992 game <a href="http://users.atw.hu/wolf3d/" target="_blank">Wolfenstein 3D</a>.
+Cub3d is a C program which generates raycasted 3D looking worlds, similar to those found in the 1992 game [Wolfenstein 3D](http://users.atw.hu/wolf3d/){:target="_blank"}.
 
 ## Parameters
 The worlds are created using `.cub` files which specify the map of the maze as well as the wall and sprite textures, floor and ceiling colors and resolution. A sample .cub file is displayed below:
