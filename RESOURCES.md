@@ -1,11 +1,10 @@
 # Resources
 
 ## On Raycasting
+* https://lodev.org/cgtutor/raycasting.html (The Holy Bible)
 * https://www.youtube.com/watch?v=eOCQfxRQ2pY
 * https://www.youtube.com/watch?v=gYRrGTC7GtA
 * https://www.youtube.com/watch?v=TOEi6T2mtHo
-
-* https://lodev.org/cgtutor/raycasting.html
 
 ## On BMP files
 * https://web.archive.org/web/20080912171714/http://www.fortunecity.com/skyscraper/windows/364/bmpffrmt.html
