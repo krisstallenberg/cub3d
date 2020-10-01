@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:18:25 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/01 18:18:44 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/01 19:33:35 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,13 @@ void        populate_texture(t_data_cub *data, int elem_type)
     }
 }
 
+void        populate_map(t_data_cub *data)
+{
+    if (data->input.map == NULL) 
+        data->input.map = ft_lstnew(data->input.line);
+    printf("this is t_map:\n%s\n", data->input.map->content);
+}
+
 void        populate_elem(t_data_cub *data, int elem_type)
 {
     if (elem_type == E_R)
@@ -93,4 +100,6 @@ void        populate_elem(t_data_cub *data, int elem_type)
         populate_texture(data, elem_type);
     if (elem_type == E_F || elem_type == E_C)
         populate_color(data, elem_type);
+    if (elem_type == E_M)
+        populate_map(data);
 }

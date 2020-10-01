@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:22:19 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/01 18:41:08 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/01 19:32:23 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,13 @@
 #define COL_F 0
 #define COL_C 1
 
-typedef struct      s_map
-{
-    char            *line;
-    struct s_map    *next;
-}                   t_map;
-
 typedef struct      s_data_input
 {
     int             fd;
     char            *line;
     int             resolution[2];
     int             color[2][3];
-    t_map           *map;
+    t_list           *map;
     char            *textures[5];
 }                   t_data_input;
 

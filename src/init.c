@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:19:55 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/01 18:20:26 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/01 20:14:57 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void        init_data_input(t_data_input *input)
     input->textures[TEX_WE] = NULL;
     input->textures[TEX_S] = NULL;
     input->map = NULL;
+    // input->map->next = NULL;
 }
 
 void        init_data(t_data_cub *data)

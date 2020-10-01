@@ -6,7 +6,7 @@
 #    By: kris <kris@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/08/19 23:35:41 by kris          #+#    #+#                  #
-#    Updated: 2020/10/01 19:13:14 by kstallen      ########   odam.nl          #
+#    Updated: 2020/10/01 20:15:54 by kstallen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,9 @@ fclean: clean
 	@$(RM) $(NAME) 
 	@make fclean -C $(LDIR)/libft
 	@echo "'$(NAME)' cleaned up"
+
+test: re
+	@./$(NAME) maps/subject-example.cub
 
 re: fclean all
 

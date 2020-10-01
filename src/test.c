@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:23:22 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/01 18:26:23 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/01 20:14:29 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,21 @@ void    print_data(t_data_cub *data)
     print_data_input(&data->input);
 }
 
+void    print_map(t_list *map)          // dereference causes a segfault
+{
+    if (map)
+    {
+        while (map->content)
+        {
+            printf("%s\n", map->content);
+            if (map->next != NULL)
+                map = map->next;
+            else
+                return ;
+        }
+    }
+}
+
 void    print_data_input(t_data_input *input)
 {
     printf("\n-----INPUT DATA-----\n\n");
@@ -45,4 +60,5 @@ void    print_data_input(t_data_input *input)
     printf("south texture:\t%s\n", input->textures[TEX_SO]);
     printf("west texture:\t%s\n", input->textures[TEX_WE]);
     printf("sprite texture:\t%s\n", input->textures[TEX_S]);
+    print_map(input->map);
 }
