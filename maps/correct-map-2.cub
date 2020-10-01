@@ -7,11 +7,16 @@ WE ./textures/W.png
 EA ./textures/E.png
 
 
-S ./textures/pillar.jpg
+S ./textures/pillar.png
 
 
 R 1280      720
 
+
+11111111111111111
+10110000111110001
+1000000000S000001
+11111111111111111
 
 11111111111111111
 10110000111110001

@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:13:23 by kris          #+#    #+#                 */
-/*   Updated: 2020/09/23 14:58:35 by kris          ########   odam.nl         */
+/*   Updated: 2020/10/01 18:13:54 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,39 +27,6 @@ void    print_data_input(t_data_input *input)
     printf("south texture:\t%s\n", input->textures[TEX_SO]);
     printf("west texture:\t%s\n", input->textures[TEX_WE]);
     printf("sprite texture:\t%s\n", input->textures[TEX_S]);
-}
-
-void    print_data(t_data_cub *data)
-{
-    print_data_input(&data->input);
-}
-
-int     check_elem_type(char *line)
-{
-    if (line[0] == 'R' && line[1] == ' ')
-        return (E_R);
-    if (line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
-        return (E_NO);
-    if (line[0] == 'S' && line[1] == 'O' && line[2] == ' ')
-        return (E_SO);
-    if (line[0] == 'W' && line[1] == 'E' && line[2] == ' ')
-        return (E_WE);
-    if (line[0] == 'E' && line[1] == 'A' && line[2] == ' ')
-        return (E_EA);
-    if (line[0] == 'S' && line[1] == ' ')
-        return (E_S);
-    if (line[0] == 'F' && line[1] == ' ')
-        return (E_F);
-    if (line[0] == 'C' && line[1] == ' ')
-        return (E_C);
-    if (line[0] == 'R' && line[1] == ' ')
-        return (E_R);
-    if (line[0] == '1')
-        return (E_M);
-    if (line[0] == '\0')
-       return (0);
-    else 
-        return (-1);
 }
 
 int     elem_is_populated(t_data_cub *data, int elem_type)
@@ -103,6 +70,62 @@ int elements_are_populated(t_data_cub* data)
         return (1);
     else
         return (0);
+}
+
+void    print_data(t_data_cub *data)
+{
+    print_data_input(&data->input);
+}
+
+int     line_is_map(t_data_cub *data)
+{
+    static int  prev_line_map = 0;
+
+    if (prev_line_map == -1)
+        return (0);
+    if (elements_are_populated(data) && !prev_line_map)
+        while (*data->input.line != '\0')
+        {
+            if (*data->input.line == '1')
+            {
+                prev_line_map = 1;
+                return (1);
+            }
+            data->input.line++;
+        }
+    if (prev_line_map && *data->input.line == '\0')
+        prev_line_map = -1;
+    else if (prev_line_map && *data->input.line != '\0')
+        return (1);
+    return (0);
+}
+
+int     check_elem_type(char *line, t_data_cub *data)
+{
+    if (line[0] == 'R' && line[1] == ' ')
+        return (E_R);
+    else if (line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
+        return (E_NO);
+    else if (line[0] == 'S' && line[1] == 'O' && line[2] == ' ')
+        return (E_SO);
+    else if (line[0] == 'W' && line[1] == 'E' && line[2] == ' ')
+        return (E_WE);
+    else if (line[0] == 'E' && line[1] == 'A' && line[2] == ' ')
+        return (E_EA);
+    else if (line[0] == 'S' && line[1] == ' ')
+        return (E_S);
+    else if (line[0] == 'F' && line[1] == ' ')
+        return (E_F);
+    else if (line[0] == 'C' && line[1] == ' ')
+        return (E_C);
+    else if (line[0] == 'R' && line[1] == ' ')
+        return (E_R);
+    else if (line_is_map(data))
+        return (E_M);
+    else if (line[0] == '\0')
+       return (0);
+    else 
+        return (-1);
 }
 
 void        populate_resolution(t_data_cub *data)
@@ -192,11 +215,13 @@ void        parse_line(t_data_cub *data)
 {
     int     elem_type;
 
-    elem_type = check_elem_type(data->input.line);
+    elem_type = check_elem_type(data->input.line, data);
     if (elem_is_populated(data, elem_type))
         exit_error("Unable to redefine input element", data);
     if (elem_type)
         populate_elem(data, elem_type);
+    printf("elem_type = %d", elem_type);
+    printf("[%s]\n", data->input.line);                                // testing
 }
 
 void        read_input(t_data_cub *data)
@@ -206,13 +231,11 @@ void        read_input(t_data_cub *data)
     ret = 1;
     while (get_next_line(data->input.fd, &data->input.line) == 1)
     {
-        printf("[%s]\n", data->input.line);                                // testing
         parse_line(data);
         free(data->input.line);
     }
     if (data->input.line)
     {
-        printf("[%s]\n", data->input.line);                                // testing
         parse_line(data);
         free(data->input.line);
     }
@@ -254,24 +277,6 @@ void        test_shit(t_data_cub *data)
     // }
 }
 
-int         main(int argc, char *argv[])
-{
-    t_data_cub  data;
-
-    data.screenshot = (argc == 3 && !ft_strncmp(argv[2], "--save", 7));
-    if (argc != (2 + data.screenshot))
-        exit_error("False amount of parameters", &data);
-    if (!ft_strend(argv[1], ".cub"))
-        exit_error("Wrong file extension", &data);
-    data.input.fd = open(argv[1], O_RDONLY);
-    if (data.input.fd == -1)
-        exit_error("", &data);
-    init_data(&data);
-    read_input(&data);
-    test_shit(&data);                   // TESTING
-    exit(0);
-}
-
 void        free_data_input(t_data_input *input)
 {
     if (input->map)
@@ -293,6 +298,24 @@ void        free_data_input(t_data_input *input)
 void        free_data(t_data_cub *data)
 {
     free_data_input(&data->input);
+}
+
+int         main(int argc, char *argv[])
+{
+    t_data_cub  data;
+
+    data.screenshot = (argc == 3 && !ft_strncmp(argv[2], "--save", 7));
+    if (argc != (2 + data.screenshot))
+        exit_error("False amount of parameters", &data);
+    if (!ft_strend(argv[1], ".cub"))
+        exit_error("Wrong file extension", &data);
+    data.input.fd = open(argv[1], O_RDONLY);
+    if (data.input.fd == -1)
+        exit_error("", &data);
+    init_data(&data);
+    read_input(&data);
+    test_shit(&data);                   // TESTING
+    exit(0);
 }
 
 /*

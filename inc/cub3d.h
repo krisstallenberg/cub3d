@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:22:19 by kris          #+#    #+#                 */
-/*   Updated: 2020/09/24 15:31:23 by kris          ########   odam.nl         */
+/*   Updated: 2020/10/01 17:00:37 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@
 typedef struct      s_map
 {
     char            *line;
-    struct s_map    *prev;
     struct s_map    *next;
 }                   t_map;
 
