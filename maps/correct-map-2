@@ -1,0 +1,19 @@
+F 220,100,50
+C 225,0,0
+
+NO ./textures/N.png
+SO ./textures/S.png
+WE ./textures/W.png
+EA ./textures/E.png
+
+
+S ./textures/pillar.jpg
+
+
+R 1280      720
+
+
+11111111111111111
+10110000111110001
+1000000000S000001
+11111111111111111
