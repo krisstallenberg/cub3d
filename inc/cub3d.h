@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:22:19 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/01 17:00:37 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/01 18:41:08 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,32 @@ typedef struct      s_data_cub
     t_data_input    input;
 }                   t_data_cub;
 
+// testing functions
+
+void    test_shit(t_data_cub *data);
+void    print_data(t_data_cub *data);
+void    print_data_input(t_data_input *input);
+
+// main
+
 int     main(int argc, char *argv[]);
+
+// parsing & populating
+
 void    exit_error(char *error_msg, t_data_cub *data);
 void    read_input(t_data_cub *data);
 void    parse_line(t_data_cub *data);
+void    free_data_input(t_data_input *input);
+void    free_data(t_data_cub *data);
+void    init_data(t_data_cub *data);
+void    init_data_input(t_data_input *input);
+void    parse_line(t_data_cub *data);
+void    read_input(t_data_cub *data);
+void    populate_resolution(t_data_cub *data);
+void    populate_color(t_data_cub *data, int elem_type);
+void    populate_texture(t_data_cub *data, int elem_type);
+void    populate_elem(t_data_cub *data, int elem_type);
+int     elem_is_populated(t_data_cub *data, int elem_type);
+int     elements_are_populated(t_data_cub* data);
+int     line_is_map(t_data_cub *data);
+int     check_elem_type(char *line, t_data_cub *data);

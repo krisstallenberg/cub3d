@@ -6,7 +6,7 @@
 #    By: kris <kris@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/08/19 23:35:41 by kris          #+#    #+#                  #
-#    Updated: 2020/09/08 17:51:10 by kris          ########   odam.nl          #
+#    Updated: 2020/10/01 19:13:14 by kstallen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,13 @@ CFLAGS = -Wall -Wextra -Werror -I $(IDIR)
 
 HDR = $(IDIR)/cub3d.h
 
-SRC = $(addprefix $(SDIR)/,cub3d.c)
-OBJ = $(addprefix $(ODIR)/,$(SRC:src/%.c=%.o))
+SRC = $(addprefix $(SDIR)/, $(SRC_FILES))
+OBJ = $(addprefix $(ODIR)/, $(SRC:src/%.c=%.o))
 ODIR = obj
 SDIR = src
 IDIR = inc
 LDIR = lib
+SRC_FILES = cub3d.c error.c free.c init.c parse.c populate.c test.c utils_elem.c
 
 vpath %.c src
 
@@ -31,14 +32,14 @@ all: $(NAME) libs
 	@echo "usage: ./$(NAME) <file name>"
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $< -L$(LDIR)/libft -lft 
+	@$(CC) $(CFLAGS) -o $(NAME) $? -L$(LDIR)/libft -lft 
+	@echo "directory '/$(ODIR)' created"
+	@echo "object files compiled and placed in '/$(ODIR)'"
 	@echo "object files and libraries are linked"
 
 $(ODIR)/%.o: $(SDIR)/%.c $(HDR) libs
 	@mkdir -p $(ODIR)
 	@$(CC) $(CFLAGS) -c $< -o $@ -I$(IDIR) -I$(LDIR)/libft
-	@echo "directory '/$(ODIR)' created"
-	@echo "object files compiled and placed in '/$(ODIR)'"
 
 libs:
 	@make -C $(LDIR)/libft
