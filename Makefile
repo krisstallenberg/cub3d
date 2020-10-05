@@ -6,7 +6,7 @@
 #    By: kris <kris@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/08/19 23:35:41 by kris          #+#    #+#                  #
-#    Updated: 2020/10/01 20:15:54 by kstallen      ########   odam.nl          #
+#    Updated: 2020/10/05 15:23:10 by kstallen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ ODIR = obj
 SDIR = src
 IDIR = inc
 LDIR = lib
-SRC_FILES = cub3d.c error.c free.c init.c parse.c populate.c test.c utils_elem.c
+SRC_FILES = cub3d.c error.c free.c init.c parse.c populate.c utils_elem.c \
+test.c validate.c
 
 vpath %.c src
 

@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:22:19 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/05 10:32:45 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/05 17:04:32 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct      s_data_input
     int             color[2][3];
     char            *textures[5];
     t_list          *map;
+    char            **map_array;
 }                   t_data_input;
 
 typedef struct      s_data_cub
@@ -71,8 +72,9 @@ void    free_data_input(t_data_input *input);
 void    free_data(t_data_cub *data);
 void    init_data(t_data_cub *data);
 void    init_data_input(t_data_input *input);
+void    process_input(t_data_cub *data);
 void    parse_line(t_data_cub *data);
-void    read_input(t_data_cub *data);
+void    populate_input(t_data_cub *data);
 void    populate_resolution(t_data_cub *data);
 void    populate_color(t_data_cub *data, int elem_type);
 void    populate_texture(t_data_cub *data, int elem_type);

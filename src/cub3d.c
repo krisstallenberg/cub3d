@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:13:23 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/01 18:26:23 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/05 15:26:00 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int         main(int argc, char *argv[])
     if (data.input.fd == -1)
         exit_error("", &data);
     init_data(&data);
-    read_input(&data);
+    process_input(&data);
     test_shit(&data);                   // TESTING
     exit(0);
 }
