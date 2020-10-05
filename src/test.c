@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:23:22 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/01 20:14:29 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/05 10:56:38 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ void    print_data(t_data_cub *data)
     print_data_input(&data->input);
 }
 
-void    print_map(t_list *map)          // dereference causes a segfault
+void    print_map(t_list *map)
 {
-    if (map)
+    t_list  *ptr;
+
+    ptr = map;
+    printf("map:");
     {
-        while (map->content)
+        while (ptr != NULL)
         {
-            printf("%s\n", map->content);
-            if (map->next != NULL)
-                map = map->next;
-            else
-                return ;
+            printf("\t\t[%s]\n", ptr->content);
+            ptr = ptr->next;
         }
     }
 }
@@ -48,17 +48,17 @@ void    print_map(t_list *map)          // dereference causes a segfault
 void    print_data_input(t_data_input *input)
 {
     printf("\n-----INPUT DATA-----\n\n");
-    printf("fd:\t\t%d\n", input->fd);
-    printf("line:\t\t%s\n", input->line);
-    printf("resolution:\t%d %d\n", input->resolution[0], input->resolution[1]);
-    printf("floor color:\t%d %d %d\n", input->color[COL_F][0], \
+    printf("fd:\t\t[%d]\n", input->fd);
+    printf("line:\t\t[%s]\n", input->line);
+    printf("resolution:\t[%d] [%d]\n", input->resolution[0], input->resolution[1]);
+    printf("floor color:\t[%d] [%d] [%d]\n", input->color[COL_F][0], \
     input->color[COL_F][1], input->color[COL_F][2]);
-    printf("ceiling color:\t%d %d %d\n", input->color[COL_C][0], \
+    printf("ceiling color:\t[%d] [%d] [%d]\n", input->color[COL_C][0], \
     input->color[COL_C][1], input->color[COL_C][2]);
-    printf("north texture:\t%s\n", input->textures[TEX_NO]);
-    printf("east texture:\t%s\n", input->textures[TEX_EA]);
-    printf("south texture:\t%s\n", input->textures[TEX_SO]);
-    printf("west texture:\t%s\n", input->textures[TEX_WE]);
-    printf("sprite texture:\t%s\n", input->textures[TEX_S]);
+    printf("north texture:\t[%s]\n", input->textures[TEX_NO]);
+    printf("east texture:\t[%s]\n", input->textures[TEX_EA]);
+    printf("south texture:\t[%s]\n", input->textures[TEX_SO]);
+    printf("west texture:\t[%s]\n", input->textures[TEX_WE]);
+    printf("sprite texture:\t[%s]\n", input->textures[TEX_S]);
     print_map(input->map);
 }

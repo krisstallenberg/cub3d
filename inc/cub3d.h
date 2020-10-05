@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:22:19 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/01 19:32:23 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/05 10:32:45 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ typedef struct      s_data_input
     char            *line;
     int             resolution[2];
     int             color[2][3];
-    t_list           *map;
     char            *textures[5];
+    t_list          *map;
 }                   t_data_input;
 
 typedef struct      s_data_cub
@@ -56,6 +56,7 @@ typedef struct      s_data_cub
 void    test_shit(t_data_cub *data);
 void    print_data(t_data_cub *data);
 void    print_data_input(t_data_input *input);
+void    print_map(t_list *map);
 
 // main
 

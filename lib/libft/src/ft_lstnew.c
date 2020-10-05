@@ -6,7 +6,7 @@
 /*   By: kstallen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/01 12:40:49 by kstallen      #+#    #+#                 */
-/*   Updated: 2019/12/01 12:40:51 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/05 13:24:59 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ t_list	*ft_lstnew(void *content)
 	if (!new)
 		return (NULL);
 	new->content = content;
+	new->next = NULL;
 	return (new);
 }

@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:19:19 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/01 18:19:36 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/05 10:53:33 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void        parse_line(t_data_cub *data)
         exit_error("Unable to redefine input element", data);
     if (elem_type)
         populate_elem(data, elem_type);
-    printf("elem_type = %d", elem_type);
     printf("[%s]\n", data->input.line);                                // testing
 }
 

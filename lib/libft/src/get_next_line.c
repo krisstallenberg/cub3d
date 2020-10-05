@@ -6,27 +6,11 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/05/20 18:44:16 by kris          #+#    #+#                 */
-/*   Updated: 2020/07/06 15:08:41 by kris          ########   odam.nl         */
+/*   Updated: 2020/10/05 10:45:04 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-/*
-**  Retrieves fd to read from and buffer to read into.
-**  Reads BUFFER_SIZE * characters from fd and concatenates to buffer.
-**  Returns 0 if EOF of fd is reached.
-*/
-
-size_t	ft_strlen(const char *str)
-{
-	size_t i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
 
 /*
 **	Frees s1.
