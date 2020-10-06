@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_fprintf.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kstallen <marvin@codam.nl>                   +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/03 14:08:28 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/08/26 16:03:47 by kris          ########   odam.nl         */
+/*   Updated: 2020/10/06 14:03:53 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
 /*
 ** Receives arguments, declares and initiates variable argument list
@@ -18,7 +18,7 @@
 ** Errors: [-1 = no format string][-2 = '%' found at end of format string]
 */
 
-int		ft_fprintf(int fd, const char *format, ...)
+int		ft_dprintf(int fd, const char *format, ...)
 {
 	t_data	data;
 

@@ -6,11 +6,11 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 15:47:25 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/09/09 17:20:57 by kris          ########   odam.nl         */
+/*   Updated: 2020/10/06 14:03:53 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
 void	print_s(t_data *data)
 {

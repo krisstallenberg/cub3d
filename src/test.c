@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:23:22 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/05 17:30:15 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/06 15:32:10 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,19 @@ void    print_map(t_list *map)
     }
 }
 
-void    print_map_array(char **map)
+void    print_map_array(t_data_input *input)
 {
     int y;
 
     y = 0;
-    while (map[y][0] != '\0')
+    printf("map_array:\n");
+    // printf("\t\t[%c]\n", *input->map_array[y]);
+    if (input->map_array == NULL)
+        printf("hurray\n");
+
+    while (input->map_array[y] != NULL)
     {
-        printf("%s\n", map[y]);
+        printf("\t\t[%s]\n", input->map_array[y]);
         y++;
     }
 }
@@ -72,6 +77,6 @@ void    print_data_input(t_data_input *input)
     printf("south texture:\t[%s]\n", input->textures[TEX_SO]);
     printf("west texture:\t[%s]\n", input->textures[TEX_WE]);
     printf("sprite texture:\t[%s]\n", input->textures[TEX_S]);
-    print_map(input->map);
-    print_map_array(input->map_array);
+    // print_map(input->map);
+    print_map_array(input);
 }

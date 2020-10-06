@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   ft_fprintf.h                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 16:50:25 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/08/24 11:54:20 by kris          ########   odam.nl         */
+/*   Updated: 2020/10/06 14:03:53 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef	struct		s_function
 	void			(*print)(t_data *data);
 }					t_function;
 
-int					ft_fprintf(int fd, const char *format, ...);
+int					ft_dprintf(int fd, const char *format, ...);
 void				select_printer(t_data *data);
 void				pop_width(t_data *data);
 void				pop_precision(t_data *data);

@@ -6,7 +6,7 @@
 #    By: kstallen <marvin@codam.nl>                   +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/12/14 16:47:18 by kstallen      #+#    #+#                  #
-#    Updated: 2020/09/20 20:12:58 by kris          ########   odam.nl          #
+#    Updated: 2020/10/06 14:03:53 by kstallen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ ft_putendl_fd.c ft_putnbr_fd.c ft_strmapi.c ft_strtrim.c \
 ft_split.c ft_itoa.c ft_strend.c ft_numlen.c\
 ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 ft_lstlast.c ft_lstadd_back.c \
-ft_fprintf.c populate.c print1.c print2.c print_utils.c utils.c libft.c \
+ft_dprintf.c populate.c print1.c print2.c print_utils.c utils.c libft.c \
 print_di.c print_di_minus.c print_hex.c print_lu.c print_utils.c \
 get_next_line.c get_next_line_utils.c 
 

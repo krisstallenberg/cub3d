@@ -6,11 +6,11 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/02/27 16:02:22 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/08/26 16:03:47 by kris          ########   odam.nl         */
+/*   Updated: 2020/10/06 14:03:53 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fprintf.h"
+#include "ft_dprintf.h"
 
 /*
 ** Resets data in struct related to individual arguments.

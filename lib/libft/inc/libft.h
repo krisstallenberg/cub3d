@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 17:30:05 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/09/20 20:14:10 by kris          ########   odam.nl         */
+/*   Updated: 2020/10/06 14:03:53 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void				ft_lstadd_front(t_list **alst, t_list *new);
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);
 void				ft_lstadd_back(t_list **alst, t_list *new);
-int					ft_fprintf(int fd, const char *format, ...);
+int					ft_dprintf(int fd, const char *format, ...);
 void				select_printer(t_data *data);
 void				pop_width(t_data *data);
 void				pop_precision(t_data *data);

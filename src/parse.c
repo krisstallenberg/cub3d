@@ -6,28 +6,52 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:19:19 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/05 17:53:01 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/06 15:36:51 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void        list_to_array(t_list *list, char **array)
+int         ft_lstwidth(t_list *list)
+{
+    int width;
+    int line_width;
+
+    width = 0;
+    line_width = 0;
+
+    while (list != NULL)
+    {
+        line_width = ft_strlen(list->content);
+        width = line_width > width ? line_width : width;
+        list = list->next;
+    }
+    return (width);
+}
+
+void        list_to_array(t_data_cub *data)
 {
     int     height;
     int     width;
     int     width_line;
     t_list  *ptr;
+    int     i;
 
-    ptr = list;
-    height = ft_lstsize(list);
-    while (ptr != NULL)
+    ptr = data->input.map;
+    i = 0;
+    height = ft_lstsize(ptr);
+    width = ft_lstwidth(ptr);
+    data->input.map_array = malloc((height + 1) * sizeof(char *));
+    ptr = data->input.map;
+    while (i < height)
     {
-        width_line = ft_strlen(list->content);
-        width = width_line > width ? width_line : width;
+        data->input.map_array[i] = ft_memmalloc(width + 1);
+        width_line = ft_strlen(ptr->content);
+        ft_memcpy(data->input.map_array[i], ptr->content, width_line);
         ptr = ptr->next;
+        i++;
     }
-   *array = malloc(width * height);
+    free_map(&data->input);
 }
 
 void        parse_line(t_data_cub *data)
@@ -62,6 +86,6 @@ void        populate_input(t_data_cub *data)
 void        process_input(t_data_cub *data)
 {
     populate_input(data);
-    // list_to_array(data->input.map, data->input.map_array);
+    list_to_array(data);
     // validate_input(data);
 }
