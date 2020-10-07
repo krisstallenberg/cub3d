@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:22:19 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/06 15:36:15 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/07 19:36:29 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct      s_data_input
     int             resolution[2];
     int             color[2][3];
     char            *textures[5];
+    int             tex_fd[5];
     t_list          *map;
     char            **map_array;
 }                   t_data_input;
@@ -84,3 +85,8 @@ int     elem_is_populated(t_data_cub *data, int elem_type);
 int     elements_are_populated(t_data_cub* data);
 int     line_is_map(t_data_cub *data);
 int     check_elem_type(char *line, t_data_cub *data);
+
+// validating
+
+void    validate_resolution(t_data_cub *data);
+void    validate_input(t_data_cub *data);

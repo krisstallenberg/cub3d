@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:20:45 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/06 15:35:53 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/07 19:44:07 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@ void        free_map(t_data_input *input)
     ptr = input->map;
     while (ptr != NULL)
     {
-        free(ptr);
+        free(ptr->content);
         ptr = ptr->next;
+
     }
 }
 
 void        free_data_input(t_data_input *input)
 {
-    if (input->map)
-        free(input->map);        // FREE ALL LINKED LIST NODES
     if (input->line)
         free(input->line);
     if (input->textures[TEX_NO])

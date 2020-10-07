@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:19:19 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/06 15:36:51 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/07 19:04:08 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,5 @@ void        process_input(t_data_cub *data)
 {
     populate_input(data);
     list_to_array(data);
-    // validate_input(data);
+    validate_input(data);
 }
