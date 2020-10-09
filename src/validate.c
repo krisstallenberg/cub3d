@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/05 15:23:21 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/07 19:49:04 by kris          ########   odam.nl         */
+/*   Updated: 2020/10/09 18:23:45 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,33 @@ void        validate_paths(t_data_cub *data)
     }
 }
 
+void        find_start(t_data_cub *data)                        // validate
+{
+    while (*data->map.array[data->map.start_y] != '\0')
+    {
+        data->map.start_x = 0;
+        while(data->map.array[data->map.start_x][data->map.start_y] != '\0')
+        {
+            if (ft_strchr("NESW", data->map.array[data->map.start_x][data->map.start_y]))
+                return ;
+            printf("x = %d, y = %d, char = '%c', next_char = '%c'\n", data->map.start_x, data->map.start_y, data->map.array[data->map.start_x][data->map.start_y], data->map.array[data->map.start_x + 1][data->map.start_y]);
+            data->map.start_x++;
+        }
+        data->map.start_y++;
+    }
+}
+
+void        validate_map(t_data_cub *data)
+{
+    find_start(data);
+    printf("start position: x = %d, y = %d\n", data->map.start_x, data->map.start_y);
+    // flood_fill(data);
+}
+
 void        validate_input(t_data_cub *data)
 {
     validate_resolution(data);
     validate_colors(data);
     validate_paths(data);
+    validate_map(data);
 }

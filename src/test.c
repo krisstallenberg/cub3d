@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:23:22 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/06 15:32:10 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/09 14:30:28 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void        test_shit(t_data_cub *data)
 void    print_data(t_data_cub *data)
 {
     print_data_input(&data->input);
+    print_data_map(&data->map);
 }
 
 void    print_map(t_list *map)
@@ -45,21 +46,22 @@ void    print_map(t_list *map)
     }
 }
 
-void    print_map_array(t_data_input *input)
+void    print_map_array(t_data_map *map)
 {
     int y;
 
     y = 0;
     printf("map_array:\n");
-    // printf("\t\t[%c]\n", *input->map_array[y]);
-    if (input->map_array == NULL)
-        printf("hurray\n");
-
-    while (input->map_array[y] != NULL)
+    while (map->array[y] != NULL)
     {
-        printf("\t\t[%s]\n", input->map_array[y]);
+        printf("\t\t[%s]\n", map->array[y]);
         y++;
     }
+}
+
+void    print_data_map(t_data_map *map)
+{
+    print_map_array(map);
 }
 
 void    print_data_input(t_data_input *input)
@@ -78,5 +80,4 @@ void    print_data_input(t_data_input *input)
     printf("west texture:\t[%s]\n", input->textures[TEX_WE]);
     printf("sprite texture:\t[%s]\n", input->textures[TEX_S]);
     // print_map(input->map);
-    print_map_array(input);
 }

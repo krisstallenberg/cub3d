@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:19:19 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/07 19:04:08 by kris          ########   odam.nl         */
+/*   Updated: 2020/10/09 14:27:14 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void        list_to_array(t_data_cub *data)
     i = 0;
     height = ft_lstsize(ptr);
     width = ft_lstwidth(ptr);
-    data->input.map_array = malloc((height + 1) * sizeof(char *));
+    data->map.array = malloc((height + 1) * sizeof(char *));
     ptr = data->input.map;
     while (i < height)
     {
-        data->input.map_array[i] = ft_memmalloc(width + 1);
+        data->map.array[i] = ft_memmalloc(width + 1);
         width_line = ft_strlen(ptr->content);
-        ft_memcpy(data->input.map_array[i], ptr->content, width_line);
+        ft_memcpy(data->map.array[i], ptr->content, width_line);
         ptr = ptr->next;
         i++;
     }

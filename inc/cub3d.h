@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:22:19 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/07 19:36:29 by kris          ########   odam.nl         */
+/*   Updated: 2020/10/09 14:38:28 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@
 #define COL_F 0
 #define COL_C 1
 
+typedef struct      s_data_map
+{
+    char            **array;
+    int             start_x;
+    int             start_y;
+}                   t_data_map;
+
+
 typedef struct      s_data_input
 {
     int             fd;
@@ -51,6 +59,7 @@ typedef struct      s_data_cub
 {
     int             screenshot;
     t_data_input    input;
+    t_data_map      map;
 }                   t_data_cub;
 
 // testing functions
@@ -59,6 +68,8 @@ void    test_shit(t_data_cub *data);
 void    print_data(t_data_cub *data);
 void    print_data_input(t_data_input *input);
 void    print_map(t_list *map);
+void    print_map_array(t_data_map *map);
+void    print_data_map(t_data_map *map);
 
 // main
 
