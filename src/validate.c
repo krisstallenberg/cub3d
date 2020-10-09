@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/05 15:23:21 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/09 18:23:45 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/09 18:46:30 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,24 @@ void        validate_paths(t_data_cub *data)
 
 void        find_start(t_data_cub *data)                        // validate
 {
+    int count_start;
+
+    count_start = 0;
     while (*data->map.array[data->map.start_y] != '\0')
     {
         data->map.start_x = 0;
-        while(data->map.array[data->map.start_x][data->map.start_y] != '\0')
+        while(data->map.array[data->map.start_y][data->map.start_x] != '\0')
         {
-            if (ft_strchr("NESW", data->map.array[data->map.start_x][data->map.start_y]))
-                return ;
-            printf("x = %d, y = %d, char = '%c', next_char = '%c'\n", data->map.start_x, data->map.start_y, data->map.array[data->map.start_x][data->map.start_y], data->map.array[data->map.start_x + 1][data->map.start_y]);
+            if (ft_strchr("NESW", data->map.array[data->map.start_y][data->map.start_x]))
+            {
+                count_start++;
+            }
+            printf("x = %d, y = %d, char = '%c'\n", data->map.start_x, data->map.start_y, data->map.array[data->map.start_y][data->map.start_x]);
             data->map.start_x++;
         }
         data->map.start_y++;
     }
+
 }
 
 void        validate_map(t_data_cub *data)
