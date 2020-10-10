@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:23:22 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/09 14:30:28 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/10 13:37:30 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void    print_map_array(t_data_map *map)
 
     y = 0;
     printf("map_array:\n");
-    while (map->array[y] != NULL)
+    while (*map->array[y] != '\0')
     {
         printf("\t\t[%s]\n", map->array[y]);
         y++;
