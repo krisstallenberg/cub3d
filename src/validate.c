@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/05 15:23:21 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/10 15:46:10 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/12 18:20:21 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,29 +97,46 @@ void        find_start(t_data_cub *data)                        // validate
     check_start(data, count_start);
 }
 
-int        flood_recursion(char **array, int x, int y)
+int        flood_recursion(t_data_cub *data, char **array, int x, int y)
 {
+    printf ("current x: %d, y: %d\n", x, y);
+    if (x == data->map.max_x || y == data->map.max_y - 1 || \
+        x <= 0 || y <= 0)
+        return (0);
+    if (ft_strchr("1x", array[y][x]))
+        return (1);
     if (ft_strchr("NESW02", array[y][x]))
         array[y][x] = 'x';
-    else if (ft_strchr("1", array[y][x]))
-        return (1);
-    if (flood_recursion(array, x + 1, y) && \
-        flood_recursion(array, x + 1, y - 1) && \
-        flood_recursion(array, x + 1, y + 1) && \
-        flood_recursion(array, x, y + 1) && \
-        flood_recursion(array, x, y - 1) && \
-        flood_recursion(array, x - 1, y + 1) && \
-        flood_recursion(array, x - 1, y - 1) && \
-        flood_recursion(array, x - 1, y))
-        return (1);
-    else
+    if (ft_strchr(" ", array[y][x]))
         return (0);
+    return (flood_recursion(data, array, x + 1, y) && \
+        flood_recursion(data, array, x + 1, y - 1) && \
+        flood_recursion(data, array, x + 1, y + 1) && \
+        flood_recursion(data, array, x, y + 1) && \
+        flood_recursion(data, array, x, y - 1) && \
+        flood_recursion(data, array, x - 1, y + 1) && \
+        flood_recursion(data, array, x - 1, y - 1) && \
+        flood_recursion(data, array, x - 1, y));
 }
+
+//   if (flood_recursion(data, array, x + 1, y) && \
+//         flood_recursion(data, array, x + 1, y - 1) && \
+//         flood_recursion(data, array, x + 1, y + 1) && \
+//         flood_recursion(data, array, x, y + 1) && \
+//         flood_recursion(data, array, x, y - 1) && \
+//         flood_recursion(data, array, x - 1, y + 1) && \
+//         flood_recursion(data, array, x - 1, y - 1) && \
+//         flood_recursion(data, array, x - 1, y))
+//         return (1);
+//     else
+//         return (0);
 
 void        flood_fill(t_data_cub *data)
 {
-    if (!flood_recursion(data->map.array, data->map.start_x, data->map.start_y))
+    printf("x: %d, y: %d\nmax_x: %d, max_y %d\n", data->map.start_x, data->map.start_y, data->map.max_x, data->map.max_y);
+    if (!flood_recursion(data, data->map.array, data->map.start_x, data->map.start_y))
         exit_error("invalid map", data);
+    print_data_map(&data->map);
 }
 
 void        check_chars_map(t_data_cub *data)
@@ -149,7 +166,7 @@ void        validate_map(t_data_cub *data)
 {
     check_chars_map(data);
     find_start(data);
-    // flood_fill(data);
+    flood_fill(data);
 }
 
 void        validate_input(t_data_cub *data)

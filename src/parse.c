@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:19:19 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/10 13:35:19 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/12 12:38:47 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,25 @@ int         ft_lstwidth(t_list *list)
 
 void        list_to_array(t_data_cub *data)
 {
-    int     height;
-    int     width;
     int     width_line;
     t_list  *ptr;
     int     i;
 
     ptr = data->input.map;
     i = 0;
-    height = ft_lstsize(ptr);
-    width = ft_lstwidth(ptr);
-    data->map.array = malloc((height + 1) * sizeof(char *));
+    data->map.max_y = ft_lstsize(ptr);
+    data->map.max_x = ft_lstwidth(ptr);
+    data->map.array = malloc((data->map.max_y + 1) * sizeof(char *));
     ptr = data->input.map;
-    while (i < height)
+    while (i < data->map.max_y)
     {
-        data->map.array[i] = ft_memmalloc(width + 1);
+        data->map.array[i] = ft_memmalloc(data->map.max_x + 1);
         width_line = ft_strlen(ptr->content);
         ft_memcpy(data->map.array[i], ptr->content, width_line);
         ptr = ptr->next;
         i++;
     }
-    data->map.array[i] = ft_memmalloc(1);
-    ft_bzero(data->map.array[i], 1);
+    data->map.array[data->map.max_y] = ft_memmalloc(data->map.max_x);
     free_map(&data->input); 
 }
 

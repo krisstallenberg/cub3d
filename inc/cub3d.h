@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:22:19 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/09 14:38:28 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/12 12:33:09 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct      s_data_map
     char            **array;
     int             start_x;
     int             start_y;
+    int             max_x;
+    int             max_y;
 }                   t_data_map;
 
 
