@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/05 15:23:21 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/12 18:20:21 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/12 18:46:34 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,11 @@ void        find_start(t_data_cub *data)                        // validate
 int        flood_recursion(t_data_cub *data, char **array, int x, int y)
 {
     printf ("current x: %d, y: %d\n", x, y);
+    if (ft_strchr("1x", array[y][x]))
+        return (1);
     if (x == data->map.max_x || y == data->map.max_y - 1 || \
         x <= 0 || y <= 0)
         return (0);
-    if (ft_strchr("1x", array[y][x]))
-        return (1);
     if (ft_strchr("NESW02", array[y][x]))
         array[y][x] = 'x';
     if (ft_strchr(" ", array[y][x]))
