@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:25:29 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/05 16:07:09 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/13 14:14:00 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,26 +83,25 @@ int check_elem_type(char *line, t_data_cub *data)
 {
     if (line[0] == 'R' && line[1] == ' ')
         return (E_R);
-    else if (line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
+    if (line[0] == 'N' && line[1] == 'O' && line[2] == ' ')
         return (E_NO);
-    else if (line[0] == 'S' && line[1] == 'O' && line[2] == ' ')
+    if (line[0] == 'S' && line[1] == 'O' && line[2] == ' ')
         return (E_SO);
-    else if (line[0] == 'W' && line[1] == 'E' && line[2] == ' ')
+    if (line[0] == 'W' && line[1] == 'E' && line[2] == ' ')
         return (E_WE);
-    else if (line[0] == 'E' && line[1] == 'A' && line[2] == ' ')
+    if (line[0] == 'E' && line[1] == 'A' && line[2] == ' ')
         return (E_EA);
-    else if (line[0] == 'S' && line[1] == ' ')
+    if (line[0] == 'S' && line[1] == ' ')
         return (E_S);
-    else if (line[0] == 'F' && line[1] == ' ')
+    if (line[0] == 'F' && line[1] == ' ')
         return (E_F);
-    else if (line[0] == 'C' && line[1] == ' ')
+    if (line[0] == 'C' && line[1] == ' ')
         return (E_C);
-    else if (line[0] == 'R' && line[1] == ' ')
+    if (line[0] == 'R' && line[1] == ' ')
         return (E_R);
-    else if (line_is_map(data))
+    if (line_is_map(data))
         return (E_M);
-    else if (line[0] == '\0')
+    if (line[0] == '\0')
        return (0);
-    else 
-        return (-1);
+    return (-1);
 }

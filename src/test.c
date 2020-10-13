@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:23:22 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/10 13:37:30 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/13 17:13:58 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,22 @@ void    print_map(t_list *map)
     }
 }
 
-void    print_map_array(t_data_map *map)
+void    print_map_array(char **array)
 {
     int y;
 
     y = 0;
     printf("map_array:\n");
-    while (*map->array[y] != '\0')
+    while (*array[y] != '\0')
     {
-        printf("\t\t[%s]\n", map->array[y]);
+        printf("\t\t[%s]\n", array[y]);
         y++;
     }
 }
 
 void    print_data_map(t_data_map *map)
 {
-    print_map_array(map);
+    print_map_array(map->array);
 }
 
 void    print_data_input(t_data_input *input)

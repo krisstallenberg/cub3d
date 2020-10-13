@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/05 15:23:21 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/12 18:46:34 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/13 17:13:24 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,24 +119,35 @@ int        flood_recursion(t_data_cub *data, char **array, int x, int y)
         flood_recursion(data, array, x - 1, y));
 }
 
-//   if (flood_recursion(data, array, x + 1, y) && \
-//         flood_recursion(data, array, x + 1, y - 1) && \
-//         flood_recursion(data, array, x + 1, y + 1) && \
-//         flood_recursion(data, array, x, y + 1) && \
-//         flood_recursion(data, array, x, y - 1) && \
-//         flood_recursion(data, array, x - 1, y + 1) && \
-//         flood_recursion(data, array, x - 1, y - 1) && \
-//         flood_recursion(data, array, x - 1, y))
-//         return (1);
-//     else
-//         return (0);
+char        **arrdup(t_data_cub *data)
+{
+    char    **new_array;
+    int     i;
+    int     width_line;
+
+    i = 0;
+    new_array = ft_memmalloc((data->map.max_y + 1) * sizeof(char *));
+    while (i < data->map.max_y)
+    {
+        new_array[i] = ft_memmalloc(data->map.max_x + 1);
+        width_line = ft_strlen(data->map.array[i]);
+        ft_memcpy(new_array[i], data->map.array[i], width_line);
+        i++;
+    }
+    new_array[i] = ft_memmalloc(data->map.max_x);
+    return (new_array);
+}
 
 void        flood_fill(t_data_cub *data)
 {
+    char **array_duplicate;
+
+    array_duplicate = arrdup(data);
     printf("x: %d, y: %d\nmax_x: %d, max_y %d\n", data->map.start_x, data->map.start_y, data->map.max_x, data->map.max_y);
-    if (!flood_recursion(data, data->map.array, data->map.start_x, data->map.start_y))
+    if (!flood_recursion(data, array_duplicate, data->map.start_x, data->map.start_y))
         exit_error("invalid map", data);
-    print_data_map(&data->map);
+    print_map_array(array_duplicate);
+    print_map_array(data->map.array);
 }
 
 void        check_chars_map(t_data_cub *data)

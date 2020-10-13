@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:22:19 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/12 12:33:09 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/13 17:07:17 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void    test_shit(t_data_cub *data);
 void    print_data(t_data_cub *data);
 void    print_data_input(t_data_input *input);
 void    print_map(t_list *map);
-void    print_map_array(t_data_map *map);
+void    print_map_array(char **array);
 void    print_data_map(t_data_map *map);
 
 // main
