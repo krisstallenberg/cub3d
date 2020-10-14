@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:22:19 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/14 10:21:42 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/14 15:27:15 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,15 @@ typedef struct      s_data_map
     int             max_y;
 }                   t_data_map;
 
+typedef struct      s_data_game
+{
+    double          dir_x;
+    double          dir_y;
+    double          plane_x;
+    double          plane_y;
+    double          time;
+    double          old_time;
+}
 
 typedef struct      s_data_input
 {

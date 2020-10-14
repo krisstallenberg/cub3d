@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:13:23 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/06 10:49:21 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/14 12:29:47 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int         main(int argc, char *argv[])
         exit_error("", &data);
     init_data(&data);
     process_input(&data);
+    start_game(&data);
     test_shit(&data);                   // TESTING
     free(data.input.map_array);
     exit(0);
