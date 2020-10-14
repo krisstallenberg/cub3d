@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/05 15:23:21 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/13 17:13:24 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/14 11:13:47 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,14 @@ void        find_start(t_data_cub *data)                        // validate
 int        flood_recursion(t_data_cub *data, char **array, int x, int y)
 {
     printf ("current x: %d, y: %d\n", x, y);
-    if (ft_strchr("1x", array[y][x]))
+    if (ft_memchr("1x", array[y][x], 2))
         return (1);
-    if (x == data->map.max_x || y == data->map.max_y - 1 || \
+    if ((x == data->map.max_x - 1) || (y == data->map.max_y - 1) || \
         x <= 0 || y <= 0)
         return (0);
-    if (ft_strchr("NESW02", array[y][x]))
+    if (ft_memchr("NESW02", array[y][x], 6))
         array[y][x] = 'x';
-    if (ft_strchr(" ", array[y][x]))
+    if (ft_memchr(" ", array[y][x], 1))
         return (0);
     return (flood_recursion(data, array, x + 1, y) && \
         flood_recursion(data, array, x + 1, y - 1) && \
@@ -146,8 +146,8 @@ void        flood_fill(t_data_cub *data)
     printf("x: %d, y: %d\nmax_x: %d, max_y %d\n", data->map.start_x, data->map.start_y, data->map.max_x, data->map.max_y);
     if (!flood_recursion(data, array_duplicate, data->map.start_x, data->map.start_y))
         exit_error("invalid map", data);
-    print_map_array(array_duplicate);
-    print_map_array(data->map.array);
+    print_map_array(array_duplicate);                   // testing
+    free_map_array(array_duplicate);
 }
 
 void        check_chars_map(t_data_cub *data)

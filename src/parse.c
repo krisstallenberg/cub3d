@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:19:19 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/12 12:38:47 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/14 10:20:42 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void        list_to_array(t_data_cub *data)
         i++;
     }
     data->map.array[data->map.max_y] = ft_memmalloc(data->map.max_x);
-    free_map(&data->input); 
+    free_map_list(&data->input); 
 }
 
 void        parse_line(t_data_cub *data)

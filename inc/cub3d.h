@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:22:19 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/13 17:07:17 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/14 10:21:42 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ void    read_input(t_data_cub *data);
 void    parse_line(t_data_cub *data);
 void    free_data_input(t_data_input *input);
 void    free_data(t_data_cub *data);
-void    free_map(t_data_input *input);
+void    free_map_list(t_data_input *input);
+void    free_map_array(char **array);
 void    init_data(t_data_cub *data);
 void    init_data_input(t_data_input *input);
 void    process_input(t_data_cub *data);

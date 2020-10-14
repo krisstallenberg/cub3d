@@ -6,13 +6,13 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/01 18:20:45 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/07 19:44:07 by kris          ########   odam.nl         */
+/*   Updated: 2020/10/14 10:49:48 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void        free_map(t_data_input *input)
+void        free_map_list(t_data_input *input)
 {
     int i;
     t_list *ptr;
@@ -24,6 +24,26 @@ void        free_map(t_data_input *input)
         free(ptr->content);
         ptr = ptr->next;
 
+    }
+}
+
+void        free_map_array(char **array)
+{
+    int i;
+
+    i = 0;
+    while (*array[i] != '\0')
+    {
+        free(array[i]);
+        array[i] = NULL;
+        i++;
+    }
+    if (i > 0)
+        free(array[i]);
+    if (array != NULL)
+    {
+        free(array);
+        array = NULL;
     }
 }
 
@@ -42,10 +62,17 @@ void        free_data_input(t_data_input *input)
     if (input->textures[TEX_S])
         free(input->textures[TEX_S]);
     if (input->map != NULL)
-        free_map(input);
+        free_map_list(input);
+}
+
+void    free_data_map(t_data_map *map)
+{
+    if (map->array)
+        free_map_array(map->array);
 }
 
 void        free_data(t_data_cub *data)
 {
     free_data_input(&data->input);
+    free_data_map(&data->map);
 }
