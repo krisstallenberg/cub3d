@@ -6,7 +6,7 @@
 #    By: kris <kris@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/08/19 23:35:41 by kris          #+#    #+#                  #
-#    Updated: 2020/10/05 15:23:10 by kstallen      ########   odam.nl          #
+#    Updated: 2020/10/15 14:25:43 by kstallen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,17 +18,17 @@ CFLAGS = -Wall -Wextra -Werror -I $(IDIR)
 HDR = $(IDIR)/cub3d.h
 
 SRC = $(addprefix $(SDIR)/, $(SRC_FILES))
-OBJ = $(addprefix $(ODIR)/, $(SRC:src/%.c=%.o))
-ODIR = obj
-SDIR = src
-IDIR = inc
-LDIR = lib
+OBJ = $(addprefix $(ODIR)/, $(SRC:$(SDIR)/%.c=%.o))
+ODIR = objects
+SDIR = sources
+IDIR = includes
+LDIR = libraries
 SRC_FILES = cub3d.c error.c free.c init.c parse.c populate.c utils_elem.c \
-test.c validate.c
+test.c validate.c game.c
 
 vpath %.c src
 
-all: $(NAME) libs
+all: $(NAME) libs mlx
 	@echo "cub3D is created"
 	@echo "usage: ./$(NAME) <file name>"
 
@@ -44,6 +44,9 @@ $(ODIR)/%.o: $(SDIR)/%.c $(HDR) libs
 
 libs:
 	@make -C $(LDIR)/libft
+
+mlx:
+	@make -C ./mlx
 
 clean:
 	@$(RM) -r $(ODIR)

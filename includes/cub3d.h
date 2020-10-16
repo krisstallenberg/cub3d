@@ -6,7 +6,7 @@
 /*   By: kris <kris@student.codam.nl>                 +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/08/18 19:22:19 by kris          #+#    #+#                 */
-/*   Updated: 2020/10/14 15:27:15 by kstallen      ########   odam.nl         */
+/*   Updated: 2020/10/15 14:13:34 by kstallen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct      s_data_game
     double          plane_y;
     double          time;
     double          old_time;
-}
+}                   t_data_game;
 
 typedef struct      s_data_input
 {
@@ -113,3 +113,7 @@ int     check_elem_type(char *line, t_data_cub *data);
 
 void    validate_resolution(t_data_cub *data);
 void    validate_input(t_data_cub *data);
+
+// starting game
+
+void    start_game(t_data_cub *data);
