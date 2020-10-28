@@ -6,7 +6,7 @@
 #    By: kris <kris@student.codam.nl>                 +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/08/19 23:35:41 by kris          #+#    #+#                  #
-#    Updated: 2020/10/15 14:25:43 by kstallen      ########   odam.nl          #
+#    Updated: 2020/10/28 13:09:21 by kris          ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ test.c validate.c game.c
 
 vpath %.c src
 
-all: $(NAME) libs mlx
+all: $(NAME) mlx libs
 	@echo "cub3D is created"
 	@echo "usage: ./$(NAME) <file name>"
 
@@ -46,11 +46,12 @@ libs:
 	@make -C $(LDIR)/libft
 
 mlx:
-	@make -C ./mlx
+	@make -C $(LDIR)/mlx
 
 clean:
 	@$(RM) -r $(ODIR)
 	@make clean -C $(LDIR)/libft
+	@make clean -C $(LDIR)/mlx
 
 fclean: clean
 	@$(RM) $(NAME) 
