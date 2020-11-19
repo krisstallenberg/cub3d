@@ -6,7 +6,7 @@
 /*   By: kstallen <kstallen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/10/05 15:23:21 by kstallen      #+#    #+#                 */
-/*   Updated: 2020/10/23 12:48:28 by kris          ########   odam.nl         */
+/*   Updated: 2020/11/09 15:46:01 by kris          ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void		find_start(t_data_cub *data)                        // validate
 
 int			flood_recursion(t_data_cub *data, char **array, int x, int y)
 {
-	printf ("current x: %d, y: %d\n", x, y);
 	if (ft_memchr("1x", array[y][x], 2))
 		return (1);
 	if ((x == data->map.max_x - 1) || (y == data->map.max_y - 1) || \
@@ -144,7 +143,6 @@ void		flood_fill(t_data_cub *data)
 	char **array_duplicate;
 
 	array_duplicate = arrdup(data);
-	printf("x: %d, y: %d\nmax_x: %d, max_y %d\n", data->map.start_x, data->map.start_y, data->map.max_x, data->map.max_y);
 	if (!flood_recursion(data, array_duplicate, data->map.start_x, data->map.start_y))
 		exit_error("invalid map", data);
 	print_map_array(array_duplicate);                   // testing
